@@ -1,0 +1,46 @@
+{
+  "name": "transaction",
+  "plural": "transactions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "account_no": {
+      "type": "number",
+      "id": true,
+      "mysql": {
+        "columnName": "ACCOUNT_NO",
+        "dataType": "BIGINT"
+      }
+    },
+    "transaction_id": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "TRANSACTION_ID",
+        "dataType": "VARCHAR"
+      }
+    },
+    "transaction_type": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "TRANSACTION_TYPE",
+        "dataType": "BIGINT"
+      }
+    },
+    "amount": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "AMOUNT",
+        "dataType": "BIGINT"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "methods": {}
+}

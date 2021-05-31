@@ -1,0 +1,87 @@
+{
+  "name": "customer",
+  "plural": "customer",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "account_no": {
+      "type": "number",
+      "id": true,
+      "required": false,
+      "mysql": {
+        "columnName": "ACCOUNT_NO",
+        "dataType": "VARCHAR",
+        "dataLength": 255,
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "NAME",
+        "dataType": "VARCHAR",
+        "dataLength": 255
+      }
+    },
+    "mobile_no": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "MOBILE_NO",
+        "dataType": "BIGINT"
+      }
+    },
+    "pin": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "PIN",
+        "dataType": "INT"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "transactions": {
+      "type": "hasMany",
+      "model": "transaction",
+      "foreignKey": "account_no",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {
+    "createCustomer": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Customer data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "number",
+          "description": "Account number created"
+        }
+      ],
+      "description": "Account  creation",
+      "http": [
+        {
+          "path": "/createCustomer",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}
