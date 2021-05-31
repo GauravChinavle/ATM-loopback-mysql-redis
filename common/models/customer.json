@@ -82,6 +82,58 @@
           "verb": "post"
         }
       ]
+    },
+    "login": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Customer data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Login message"
+        }
+      ],
+      "description": "Login process",
+      "http": [
+        {
+          "path": "/login",
+          "verb": "post"
+        }
+      ]
+    },
+    "logout": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Customer data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Logout message"
+        }
+      ],
+      "description": "Logout process",
+      "http": [
+        {
+          "path": "/logout",
+          "verb": "post"
+        }
+      ]
     }
   }
 }

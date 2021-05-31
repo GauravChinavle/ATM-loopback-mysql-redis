@@ -1,7 +1,11 @@
 "use strict";
+const auth = require('./auth');
 
 module.exports = function(Transaction) {
   Transaction.debit = async data => {
+    if(await auth.isLoggedIn(data) === false){
+      return "Session expired"
+    }
     let {amount} = await new Promise((resolve, reject) => {
       data.transaction_id = "DB" + Math.floor(Math.random() * 100000);
       data.transaction_type = "DEBIT";
@@ -15,6 +19,9 @@ module.exports = function(Transaction) {
   };
 
   Transaction.credit = async data => {
+    if(await auth.isLoggedIn(data) === false){
+      return "Session timeout"
+    }
     let {amount} = await new Promise((resolve, reject) => {
       data.transaction_id = "CR" + Math.floor(Math.random() * 100000);
       data.transaction_type = "CREDIT";
