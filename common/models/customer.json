@@ -71,7 +71,7 @@
       "returns": [
         {
           "arg": "message",
-          "type": "number",
+          "type": "string",
           "description": "Account number created"
         }
       ],

@@ -42,5 +42,59 @@
   },
   "validations": [],
   "relations": {},
-  "methods": {}
+  "methods": {
+    "debit": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Debit data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Amount debited"
+        }
+      ],
+      "description": "Debit process",
+      "http": [
+        {
+          "path": "/debit",
+          "verb": "post"
+        }
+      ]
+    },
+    "credit": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Credit data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Amount credited"
+        }
+      ],
+      "description": "Credit process",
+      "http": [
+        {
+          "path": "/credit",
+          "verb": "post"
+        }
+      ]
+    }
+
+  }
 }
