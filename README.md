@@ -1,19 +1,18 @@
-# Image processing app using Loopback 3.x and Async module 
+# ATM machine app using Loopback 3.x , MySQL and redis 
 
 ### Description
-This project processes as following : 
-- Uploads image through _multer_
-- Check if that file exists
-- Checks if that file is Image using _is-image_
-- Renames that file to original file name
-- Extract text from image using _tesseract_
-- Changes file extension using _replace-ext_
-- Writes extracted text to text file. 
+This project provides ATM functionalities  as following : 
+- Sign up as customer
+- Login with response session id
+- Perform Credit & Debit operation with give session id
+- Logout with given session id
 
 ### How to use ?
+  - Create SQL table and trigger
+  - Run 
   ```
-  git clone https://github.com/GauravChinavle/loopback3-img-process.git
-  cd loopback3-img-process
+  git clone https://github.com/GauravChinavle/ATM-loopback3-mysql-redis.git
+  cd ATM-loopback3-mysql-redis
   npm install
   nodemon .
   ```
@@ -22,13 +21,11 @@ This project processes as following :
 - [Nodejs](https://nodejs.org/en/) - _JavaScript runtime built on Chrome's V8 JavaScript engine_
 - [Loopback 3.x](https://loopback.io/doc/en/lb3/) - _Highly-extensible, open-source Node. js framework that enables you to: Create dynamic end-to-end REST APIs with little or no coding. Access data from major relational databases, MongoDB, SOAP and REST APIs_
 
-### Modules used
-- [multer](https://www.npmjs.com/package/multer) - _Node.js middleware for handling multipart/form-data, which is primarily used for uploading files_
-- [async](https://www.npmjs.com/package/async) - _Utility module which provides straight-forward, powerful functions for working with asynchronous JavaScript_
-- [tesseract.js](https://www.npmjs.com/package/tesseract.js/v/2.1.1) - _A javascript library that gets words in almost any language out of images_
-- [is-image](https://www.npmjs.com/package/is-image) - _To check if a file path is an image_
-- [replace-ext](https://www.npmjs.com/package/replace-ext) - _Replaces a file extension with another one._
-
+### Database used
+- [MySQL](https://www.mysql.com/) - _Open-source relational database management system_
+  - used to store Customer Data and transaction data
+- [redis](https://redis.io/) - _In-memory data structure store, used as a database, cache, and message broker_
+  - used to for caching the session id
 
 ### Credentials 
 - Add your MySQL credentials to datasources.json file
