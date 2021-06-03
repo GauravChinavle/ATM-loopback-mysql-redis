@@ -2,21 +2,20 @@
 const auth = require("./auth");
 
 module.exports = function(Customer) {
-  Customer.login = async data => {
+  Customer.login = async data => {          //Login customer
     const msg = auth.loginSession({ ...data });
     return msg;
   };
 
-  Customer.logout = async data => {
+  Customer.logout = async data => {         //Logout customer
     const msg = auth.logoutSession({ ...data });
     return msg;
   };
 
-  Customer.createCustomer = async data => {
+  Customer.createCustomer = async data => {     //Create customer
     let { id } = await new Promise((resolve, reject) => {
       Customer.create(data, (err, results) => {
         if (err) reject(err);
-        // Reject here
         else resolve(results);
       });
     });

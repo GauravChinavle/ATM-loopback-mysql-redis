@@ -5,7 +5,7 @@ const client = redis.createClient(REDIS_PORT);
 var loopback = require("loopback");
 let Customer = loopback.getModel("customer");
 
-module.exports.loginSession = async function(data) {
+module.exports.loginSession = async function(data) {          //Login customer's session
   let count = await new Promise((resolve, reject) => {
     Customer.count(data, (err, count) => {
       err ? reject(err): resolve(count)
@@ -21,7 +21,7 @@ module.exports.loginSession = async function(data) {
   return "Session id is " + data.session_id;
 };
 
-module.exports.isLoggedIn = async function({ session_id }) {
+module.exports.isLoggedIn = async function({ session_id }) {        //Checks if customer is in session
   let result = await new Promise((resolve, reject) => {
     client.get(session_id, (err, data) => {
        err ? reject(err) : resolve(data);
@@ -34,7 +34,7 @@ module.exports.isLoggedIn = async function({ session_id }) {
   return JSON.parse(result);
 };
 
-module.exports.logoutSession = async function({ session_id }) {
+module.exports.logoutSession = async function({ session_id }) {       //Logsout customer session
   let result = await new Promise((resolve, reject) => {
     client.del(session_id, (err, data) => {
       err ? reject(err) : resolve(data)
