@@ -1,0 +1,139 @@
+{
+  "name": "customer",
+  "plural": "customer",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "account_no": {
+      "type": "number",
+      "id": true,
+      "required": false,
+      "mysql": {
+        "columnName": "ACCOUNT_NO",
+        "dataType": "VARCHAR",
+        "dataLength": 255,
+        "nullable": "N"
+      }
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "mysql": {
+        "columnName": "NAME",
+        "dataType": "VARCHAR",
+        "dataLength": 255
+      }
+    },
+    "mobile_no": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "MOBILE_NO",
+        "dataType": "BIGINT"
+      }
+    },
+    "pin": {
+      "type": "number",
+      "required": true,
+      "mysql": {
+        "columnName": "PIN",
+        "dataType": "INT"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "transactions": {
+      "type": "hasMany",
+      "model": "transaction",
+      "foreignKey": "account_no",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {
+    "createCustomer": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Customer data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Account number created"
+        }
+      ],
+      "description": "Account  creation",
+      "http": [
+        {
+          "path": "/createCustomer",
+          "verb": "post"
+        }
+      ]
+    },
+    "login": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Customer data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Login message"
+        }
+      ],
+      "description": "Login process",
+      "http": [
+        {
+          "path": "/login",
+          "verb": "post"
+        }
+      ]
+    },
+    "logout": {
+      "accepts": [
+        {
+          "arg": "data",
+          "type": "object",
+          "http": {
+            "source": "body"
+          },
+          "description": "Customer data"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "message",
+          "type": "string",
+          "description": "Logout message"
+        }
+      ],
+      "description": "Logout process",
+      "http": [
+        {
+          "path": "/logout",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}
