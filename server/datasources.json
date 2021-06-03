@@ -1,12 +1,12 @@
 {
   "mysql": {
-    "host": "localhost",
-    "port": 3306,
+    "host": "",
+    "port": ,
     "url": "",
-    "database": "atmdb",
-    "password": "System@123",
+    "database": "",
+    "password": "",
     "name": "mysql",
-    "user": "root",
+    "user": "",
     "connector": "mysql"
   }
 }
